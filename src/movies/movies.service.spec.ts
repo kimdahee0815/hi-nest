@@ -65,4 +65,19 @@ describe('MoviesService', () => {
       }
     });
   });
+  describe('create', () => {
+    it('should create a movie', () => {
+      const beforeCreate = service.getAll();
+      const beforeCreateLen = beforeCreate.length;
+      service.create({
+        title: 'Test Movie',
+        genres: ['test'],
+        year: 2000,
+      });
+      const afterCreate = service.getAll();
+      const afterCreateLen = afterCreate.length;
+      expect(afterCreateLen).toBeGreaterThan(beforeCreateLen);
+      expect(afterCreate[afterCreate.length - 1].title).toEqual('Test Movie');
+    });
+  });
 });
