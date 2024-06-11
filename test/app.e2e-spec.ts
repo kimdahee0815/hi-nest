@@ -29,7 +29,7 @@ describe('AppController (e2e)', () => {
       .expect('Welcome to my Movie API!');
   });
   describe('/movies', () => {
-    it('GET', () => {
+    it('GET 200', () => {
       return request(app.getHttpServer()).get('/movies').expect(200).expect([]);
     });
     it('POST 201', () => {
@@ -53,7 +53,7 @@ describe('AppController (e2e)', () => {
         })
         .expect(400);
     });
-    it('DELETE', () => {
+    it('DELETE 404', () => {
       return request(app.getHttpServer()).delete('/movies').expect(404);
     });
   });
@@ -65,7 +65,7 @@ describe('AppController (e2e)', () => {
       return request(app.getHttpServer()).get('/movies/999').expect(404);
     });
 
-    it('PATCH', () => {
+    it('PATCH 200', () => {
       return request(app.getHttpServer())
         .patch('/movies/1')
         .send({
@@ -73,7 +73,7 @@ describe('AppController (e2e)', () => {
         })
         .expect(200);
     });
-    it('DELETE', () => {
+    it('DELETE 200', () => {
       return request(app.getHttpServer()).delete('/movies/1').expect(200);
     });
   });
