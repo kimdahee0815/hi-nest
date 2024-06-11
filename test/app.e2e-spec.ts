@@ -21,8 +21,9 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect('Welcome to my Movie API!');
   });
-
-  it('/movies (GET)', () => {
-    return request(app.getHttpServer()).get('/movies').expect(200).expect([]);
+  describe('/movies', () => {
+    it('/movies (GET)', () => {
+      return request(app.getHttpServer()).get('/movies').expect(200).expect([]);
+    });
   });
 });
